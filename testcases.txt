@@ -1,0 +1,42 @@
+// configuration 1.
+
+./smalld 4121 123456 &
+./smallSet localhost 4121 123456 name "Alfred E. Newman"
+./smallGet localhost 4121 123456 name
+./smallGet localhost 4121 123456 name
+./smallDigest localhost 4121 123456 "Alfred E. Newman"
+./smallRun localhost 4121 123456 inet
+./smallRun localhost 4121 123456 inot
+./smallSet localhost 4121 123456 foo "I prefer Python to C"
+./smallGet localhost 4121 123456 foo
+./smallGet localhost 4121 123456 PATH
+./smallDigest localhost 4121 123456 "I actually prefer JavaScript"
+./smallRun localhost 4121 123456 hosts
+./smallRun localhost 4121 123456 service
+pkill -e smalld
+
+// configuration 2. 
+
+base=~/CS270/Project5
+host=dnbr225.netlab.uky.edu
+port=4121
+key=123456
+smalld="$base/smalld $port $key"
+smallSet="$base/smallSet $host $port $key"
+smallGet="$base/smallGet $host $port $key"
+smallDigest="$base/smallDigest $host $port $key"
+smallRun="$base/smallRun $host $port $key"
+$smalld &
+$smallSet name "Alfred E. Newman"
+$smallGet name
+$smallGet nome
+$smallDigest "Alfred E. Newman"
+$smallRun inet
+$smallRun inot
+$smallSet foo "I prefer Python to C"
+$smallGet foo
+$smallGet PATH
+$smallDigest "I actually prefer JavaScript"
+$smallRun hosts
+$smallRun service
+pkill -e smalld
